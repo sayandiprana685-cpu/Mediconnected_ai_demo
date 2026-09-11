@@ -21,6 +21,9 @@ const crossSiteCookies = process.env.COOKIE_SAMESITE
 export const env = {
   node: process.env.NODE_ENV || "development",
   isProd: process.env.NODE_ENV === "production",
+  // Also true on a hosted deploy that never set NODE_ENV — use this, not
+  // isProd, to gate anything that must not exist outside a developer machine.
+  isHostedProd,
   port: Number(process.env.PORT || 5000),
   clientUrl: process.env.CLIENT_URL || "http://127.0.0.1:5173",
   corsOrigins: [

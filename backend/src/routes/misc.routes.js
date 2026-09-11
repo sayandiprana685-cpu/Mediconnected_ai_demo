@@ -77,7 +77,9 @@ router.get(
 router.get(
   "/dev/outbox",
   asyncHandler(async (req, res) => {
-    if (env.isProd) return res.status(404).json({ error: "Not found" });
+    // Unauthenticated, and it replays outbound mail — OTP codes, invitation and
+    // password-reset links. isHostedProd covers a deploy that never set NODE_ENV.
+    if (env.isHostedProd) return res.status(404).json({ error: "Not found" });
     res.json({ emails: listOutboundEmails() });
   })
 );
