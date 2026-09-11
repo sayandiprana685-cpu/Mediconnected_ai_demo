@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-ink: #13242c;
+  --color-ink-soft: #3d545c;
+  --color-paper: #f7f4ee;
+  --color-paper-2: #fffdf8;
+  --color-line: #e2dbd0;
+  --color-teal-950: #072830;
+  --color-teal-900: #0b3d4a;
+  --color-teal-800: #125564;
+  --color-teal-600: #1b7c7a;
+  --color-teal-500: #2a9a8f;
+  --color-teal-100: #e4f3f0;
+  --color-gold: #b5812f;
+  --color-danger: #9b2c3a;
+  --color-ok: #1f6b4a;
+  --color-warn: #a15c12;
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 0 rgba(19, 36, 44, 0.04), 0 12px 32px rgba(7, 40, 48, 0.06);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-teal-600);
+  outline-offset: 2px;
+}
+
+.network-bg {
+  background-color: #f7f4ee;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(27, 124, 122, 0.08), transparent 28%),
+    radial-gradient(circle at 88% 8%, rgba(11, 61, 74, 0.07), transparent 26%),
+    linear-gradient(180deg, transparent 0%, transparent 100%),
+    url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23125564' stroke-opacity='0.07' stroke-width='1'%3E%3Ccircle cx='20' cy='24' r='2' fill='%23125564' fill-opacity='0.12'/%3E%3Ccircle cx='92' cy='18' r='2' fill='%23125564' fill-opacity='0.12'/%3E%3Ccircle cx='60' cy='70' r='2' fill='%23125564' fill-opacity='0.12'/%3E%3Cpath d='M20 24 L60 70 L92 18'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.pathway {
+  background-image: linear-gradient(90deg, var(--color-teal-600), var(--color-teal-500), #c9a56a);
+  height: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enter {
+  animation: fade-up 0.45s ease both;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.pulse-status {
+  animation: pulse-soft 1.8s ease-in-out infinite;
+}
